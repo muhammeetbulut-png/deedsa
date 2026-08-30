@@ -1,5 +1,2 @@
-fastapi
-uvicorn
-httpx
-dnspython
-pydantic
+flask
+gunicorn
