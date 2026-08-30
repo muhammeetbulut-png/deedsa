@@ -58,7 +58,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     </div>
   </div>
 
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2">
         <span class="text-2xl md:text-3xl font-black tracking-tight text-blue-600">Deed<span class="text-slate-900">Sa</span></span>
@@ -74,79 +74,81 @@ HTML_CONTENT = """<!DOCTYPE html>
       </nav>
 
       <button onclick="toggleMobileMenu()" class="p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none" aria-label="Menü">
-        <i class="fa-solid fa-bars text-xl"></i>
+        <i class="fa-solid fa-bars text-2xl text-slate-800"></i>
       </button>
     </div>
+  </header>
 
-    <div id="mobileDrawer" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden transition-opacity">
-      <div class="fixed top-0 right-0 w-4/5 max-w-xs h-full bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
-        <div>
-          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-            <span class="text-lg font-black text-blue-600">Deed<span class="text-slate-900">Sa</span> Menü</span>
-            <button onclick="toggleMobileMenu()" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg">
-              <i class="fa-solid fa-xmark text-xl"></i>
+  <div id="mobileDrawer" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden transition-opacity">
+    <div class="fixed top-0 right-0 w-[85%] max-w-sm h-screen bg-white shadow-2xl flex flex-col justify-between overflow-y-auto">
+      
+      <div class="p-6">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <span class="text-xl font-black text-blue-600">Deed<span class="text-slate-900">Sa</span> Menü</span>
+          <button onclick="toggleMobileMenu()" class="p-2 text-slate-500 hover:bg-slate-100 rounded-full">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+          </button>
+        </div>
+
+        <div class="mt-5 p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-key text-blue-600 text-sm"></i>
+            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Gemini API Anahtarı</span>
+          </div>
+          <div class="space-y-2">
+            <input type="password" id="geminiApiKeyInput" placeholder="AIzaSy..." class="w-full text-xs px-3 py-2.5 border border-slate-300 rounded-xl bg-white focus:outline-none focus:border-blue-600" />
+            <button onclick="saveApiKey()" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-2.5 rounded-xl font-bold transition shadow-sm flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-floppy-disk"></i> Anahtarı Kaydet
             </button>
           </div>
-
-          <div class="mt-5 p-3.5 bg-blue-50/70 border border-blue-100 rounded-xl">
-            <div class="flex items-center gap-2 mb-2">
-              <i class="fa-solid fa-microchip text-blue-600 text-xs"></i>
-              <span class="text-xs font-bold text-slate-800">Gemini API Anahtarı</span>
-            </div>
-            <div class="space-y-2">
-              <input type="password" id="geminiApiKeyInput" placeholder="AIzaSy..." class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-blue-600" />
-              <button onclick="saveApiKey()" class="w-full bg-blue-600 text-white text-xs py-2 rounded-lg font-bold hover:bg-blue-700 transition shadow-sm">
-                Kaydet
-              </button>
-            </div>
-            <p id="apiKeyStatus" class="text-[10px] text-slate-500 mt-1.5 flex items-center gap-1">
-              <i class="fa-solid fa-shield-halved text-emerald-600"></i> Tarayıcınızda güvenle saklanır.
-            </p>
-          </div>
-
-          <div class="mt-6 flex flex-col space-y-3 text-sm font-semibold text-slate-700">
-            <a href="#araclar" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 hover:text-blue-600">
-              <i class="fa-solid fa-compass text-slate-400 w-4"></i> Araçlar Rehberi
-            </a>
-            <a href="#robom" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 hover:text-blue-600">
-              <i class="fa-solid fa-robot text-slate-400 w-4"></i> Robom AI Nedir?
-            </a>
-            <a href="#namecheap" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 hover:text-blue-600">
-              <i class="fa-solid fa-tag text-slate-400 w-4"></i> Neden Namecheap?
-            </a>
-            <a href="#sedo" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 hover:text-blue-600">
-              <i class="fa-solid fa-chart-line text-slate-400 w-4"></i> Neden Sedo?
-            </a>
-            <a href="#arbitraj" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 hover:text-blue-600">
-              <i class="fa-solid fa-coins text-slate-400 w-4"></i> Nasıl Para Kazanılır?
-            </a>
-            <a href="#sss" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 hover:text-blue-600">
-              <i class="fa-solid fa-circle-question text-slate-400 w-4"></i> SSS
-            </a>
-          </div>
+          <p id="apiKeyStatus" class="text-[11px] text-slate-500 mt-2 flex items-center gap-1">
+            <i class="fa-solid fa-shield-halved text-emerald-600"></i> Tarayıcınızda güvenle saklanır.
+          </p>
         </div>
 
-        <div class="pt-6 border-t border-slate-100">
-          <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3">Sosyal Medya</p>
-          <div class="flex items-center gap-3">
-            <a href="https://x.com" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition text-xs">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition text-xs">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition text-xs">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="mailto:info@deedsa.com" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition text-xs">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-          </div>
-          <p class="text-[10px] text-slate-400 mt-3">© 2026 DeedSa Enterprise</p>
+        <div class="mt-6 flex flex-col space-y-1 text-sm font-semibold text-slate-700">
+          <a href="#araclar" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">
+            <i class="fa-solid fa-compass text-slate-400 w-5"></i> Araçlar Rehberi
+          </a>
+          <a href="#robom" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">
+            <i class="fa-solid fa-robot text-slate-400 w-5"></i> Robom AI Nedir?
+          </a>
+          <a href="#namecheap" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">
+            <i class="fa-solid fa-tag text-slate-400 w-5"></i> Neden Namecheap?
+          </a>
+          <a href="#sedo" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">
+            <i class="fa-solid fa-chart-line text-slate-400 w-5"></i> Neden Sedo?
+          </a>
+          <a href="#arbitraj" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">
+            <i class="fa-solid fa-coins text-slate-400 w-5"></i> Nasıl Para Kazanılır?
+          </a>
+          <a href="#sss" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 hover:text-blue-600 transition">
+            <i class="fa-solid fa-circle-question text-slate-400 w-5"></i> Sıkça Sorulan Sorular
+          </a>
         </div>
       </div>
+
+      <div class="p-6 bg-slate-50 border-t border-slate-100">
+        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3">Bizi Takip Edin</p>
+        <div class="flex items-center gap-3">
+          <a href="https://x.com" target="_blank" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white transition text-sm">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white transition text-sm">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white transition text-sm">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="mailto:info@deedsa.com" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white transition text-sm">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+        <p class="text-[10px] text-slate-400 mt-4">© 2026 DeedSa Enterprise</p>
+      </div>
+
     </div>
-  </header>
+  </div>
 
   <main class="max-w-4xl mx-auto px-4 pt-8 pb-12 space-y-10">
     <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold text-slate-600">
@@ -250,7 +252,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     </footer>
   </main>
 
-  <div class="fixed bottom-5 right-5 z-40">
+  <div class="fixed bottom-5 right-5 z-20">
     <button onclick="toggleMobileMenu()" class="w-12 h-12 md:w-14 md:h-14 bg-slate-900 hover:bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center transition border-2 border-white">
       <i class="fa-solid fa-robot text-lg md:text-xl"></i>
       <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
@@ -261,8 +263,10 @@ HTML_CONTENT = """<!DOCTYPE html>
     window.addEventListener('load', () => {
       setTimeout(() => {
         const intro = document.getElementById('intro-screen');
-        intro.style.opacity = '0';
-        setTimeout(() => { intro.style.visibility = 'hidden'; }, 800);
+        if (intro) {
+          intro.style.opacity = '0';
+          setTimeout(() => { intro.style.visibility = 'hidden'; }, 800);
+        }
       }, 2200);
 
       const savedKey = localStorage.getItem('GEMINI_API_KEY');
@@ -281,7 +285,7 @@ HTML_CONTENT = """<!DOCTYPE html>
       const key = document.getElementById('geminiApiKeyInput').value.trim();
       if (key) {
         localStorage.setItem('GEMINI_API_KEY', key);
-        document.getElementById('apiKeyStatus').innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600"></i> API Anahtarı kaydedildi!';
+        document.getElementById('apiKeyStatus').innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600"></i> API Anahtarı başarıyla kaydedildi!';
         setTimeout(() => { toggleMobileMenu(); }, 800);
       } else {
         alert('Lütfen geçerli bir Gemini API anahtarı girin.');
