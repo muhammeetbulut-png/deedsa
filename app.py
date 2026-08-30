@@ -1,9 +1,10 @@
 import os
 import socket
 import json
-import urllib.request
-import urllib.parse
-from flask import Flask, request, jsonify, render_template_string
+import requests
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse, JSONResponse
+from pydantic import BaseModel
 
 app = Flask(__name__)
 
