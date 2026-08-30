@@ -1173,7 +1173,7 @@ HTML_CONTENT = """
                     <div class="step-card p-4 border rounded-3 bg-light">
                         <h4 class="fw-bold text-dark mb-1"><i class="fa-solid fa-envelope text-primary me-2"></i>E-Posta Desteği</h4>
                         <p class="text-secondary small mb-2">Tüm teknik soru ve kurumsal iş birlikleri için:</p>
-                        <a href="mailto:support@deedsa.com" class="fw-bold text-primary text-decoration-none fs-5">support@deedsa.com</a>
+                        <a href="mailto:support.deedsa.com" class="fw-bold text-primary text-decoration-none fs-5">support@deedsa.com</a>
                     </div>
                 </div>
             </div>
